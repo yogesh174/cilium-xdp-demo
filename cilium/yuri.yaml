@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: yuri
+  labels:
+    country: ostania
+    agent: yuri
+spec:
+  containers:
+  - name: briars
+    image: docker.io/tgraf/netperf

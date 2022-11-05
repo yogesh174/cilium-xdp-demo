@@ -1,0 +1,18 @@
+apiVersion: "cilium.io/v2"
+kind: CiliumNetworkPolicy
+metadata:
+  name: "westalis-rule"
+spec:
+  description: "L3-L4 policy to restrict WISE access to westalis ships only"
+  endpointSelector:
+    matchLabels:
+      country: westalis
+      org: wise
+  ingress:
+  - fromEndpoints:
+    - matchLabels:
+        country: westalis
+    toPorts:
+    - ports:
+      - port: "80"
+        protocol: TCP

@@ -1,0 +1,24 @@
+apiVersion: "cilium.io/v2"
+kind: CiliumNetworkPolicy
+metadata:
+  name: "twilight-rule"
+spec:
+  description: "L7 policy to restrict twilights's access to /emergency-abort"
+  endpointSelector:
+    matchLabels:
+      country: westalis
+      org: wise
+  ingress:
+  - fromEndpoints:
+    - matchLabels:
+        country: westalis
+    toPorts:
+    - ports:
+      - port: "80"
+        protocol: TCP
+      rules:
+        http:
+        - method: "GET"
+          path: "/"
+        - method: "POST"
+          path: "/report-mission"

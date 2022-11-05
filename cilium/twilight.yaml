@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: twilight
+  labels:
+    country: westalis
+    agent: twilight
+spec:
+  containers:
+  - name: twiyor
+    image: docker.io/tgraf/netperf
