@@ -1,6 +1,8 @@
 # Cilium and XDP
 A network programming mini-project showcasing a basic working of Cilium and how it utilizes XDP & eBPF under the hood.
 
+[Here](https://docs.google.com/presentation/d/105roGN918aeNfnE_1yY3oGLWEHH0L0glaLZIh98c6rM/edit?usp=sharing) are the slides to get a better understanding.
+
 # Cilium
 
 ## Application background
@@ -39,7 +41,14 @@ docker exec -it xdp-demo /bin/bash
 To see `drop_all.c` running:
 ```
 $XDP_COMPILE drop_all.c  # compiles the program
-ip link set eth0 xdpgeneric obj drop_all.o sec drop_all
+ip link set eth0 xdpgeneric obj drop_all.o sec drop_all # attaches the object to NIC
+```
+
+Don't worry about the `BTF debug data section '.BTF' rejected: Invalid argument (22)!` error. It will get fixed in the next versions of iproute. Just think of it as a warning and ignore it for now.
+
+To detach the xdp program from the `eth0` interface
+```
+ip link set eth0 xdpgeneric off
 ```
 
 The file names are obvious enough to know what they do but anyways here's the description:
