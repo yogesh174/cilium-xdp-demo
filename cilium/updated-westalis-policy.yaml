@@ -1,7 +1,7 @@
 apiVersion: "cilium.io/v2"
 kind: CiliumNetworkPolicy
 metadata:
-  name: "twilight-rule"
+  name: "updated-westalis-rule"
 spec:
   description: "L7 policy to restrict twilights's access to /emergency-abort"
   endpointSelector:
